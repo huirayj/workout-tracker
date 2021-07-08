@@ -7,7 +7,7 @@ router.get('/workouts', async (req, res) => {
         const totDur = { totalDuration: { $sum: '$exercises.duration' } };
         const pipeline = [
             { $set: totDur },
-            { $sort: { "day": 1 }}
+            { $sort: { "day": 1 } }
         ];
         const allWorkoutData = await db.aggregate(pipeline);
 
@@ -32,7 +32,7 @@ router.post('/workouts', async ({ body }, res) => {
 router.put('/workouts/:id', async ({ body, params }, res) => {
     try {
         const updWorkoutData = await db.findOneAndUpdate(
-            params.id,
+            { _id: params.id },
             { $push: { exercises: body } },
             { new: true }
         );
@@ -49,8 +49,8 @@ router.get('/workouts/range', async (req, res) => {
         const totDur = { totalDuration: { $sum: '$exercises.duration' } };
         const pipeline = [
             { $set: totDur },
-            { $sort: { "day": 1}},
-            { $limit: 7}
+            { $sort: { "day": 1 } },
+            { $limit: 7 }
         ];
         const rngWorkoutData = await db.aggregate(pipeline);
 
