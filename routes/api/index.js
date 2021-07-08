@@ -49,7 +49,7 @@ router.get('/workouts/range', async (req, res) => {
         const totDur = { totalDuration: { $sum: '$exercises.duration' } };
         const pipeline = [
             { $set: totDur },
-            { $sort: { "day": 1 } },
+            { $sort: { 'day': -1 } },
             { $limit: 7 }
         ];
         const rngWorkoutData = await db.aggregate(pipeline);
