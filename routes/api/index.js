@@ -43,7 +43,7 @@ router.put('/workouts/:id', async ({ body, params }, res) => {
     }
 });
 
-// gets previous 7 workouts, sorted and the total duration
+// gets previous 7 workouts, sorted desc and the total duration
 router.get('/workouts/range', async (req, res) => {
     try {
         const totDur = { totalDuration: { $sum: '$exercises.duration' } };
