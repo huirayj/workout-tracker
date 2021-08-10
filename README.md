@@ -48,7 +48,6 @@ In this exercise, the user uses a NoSQL database, specifically, MongoDB to creat
 
 - [Deployed Site](https://workout-tracker-huirayj.herokuapp.com/)
 - [Repository](https://github.com/huirayj/workout-tracker)
--
 
 ## Resources
 
